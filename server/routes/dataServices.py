@@ -4,7 +4,7 @@ import re
 import os
 from os import environ
 from sqlalchemy import create_engine, text
-from server.routes import apiServices as lolapi
+from routes import apiServices as lolapi
 
 db_engine = create_engine(environ.get('DB_URL'), pool_recycle=3600)
 

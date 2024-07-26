@@ -1,7 +1,5 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for
 
-from server.routes import apiServices as lolapi
-
 views = Blueprint('views', __name__)
 
 @views.route('/')
