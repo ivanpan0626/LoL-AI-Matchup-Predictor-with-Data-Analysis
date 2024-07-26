@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for
 import requests
 import pandas as pd
-from routes import services as lolapi
+from server.routes import apiServices as lolapi
 from sqlalchemy import create_engine, text
 from os import environ
 

@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for
 import json
 import pandas as pd
-from routes import services as lolapi
+from server.routes import apiServices as lolapi
 from routes import ai as ai
 from tensorflow.keras.models import load_model
 import numpy as np

@@ -3,7 +3,7 @@ from sklearn.preprocessing import LabelEncoder, StandardScaler
 import os
 import json
 import pandas as pd
-from routes import services as lolapi
+from server.routes import apiServices as lolapi
 import ast
 
 base_dir = os.path.abspath(os.path.dirname(__file__))

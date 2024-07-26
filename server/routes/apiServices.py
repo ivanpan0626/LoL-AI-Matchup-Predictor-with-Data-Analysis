@@ -1,4 +1,4 @@
-from routes import dataCollection as data
+from server.routes import dataServices as data
 import requests
 from os import environ
 
