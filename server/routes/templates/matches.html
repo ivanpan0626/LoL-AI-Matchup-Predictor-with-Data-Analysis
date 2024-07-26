@@ -1,0 +1,98 @@
+{% extends "base.html" %} {% block title %}Match History{% endblock %}
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='matches.css')}}" />
+<div class="container">
+    <div class="StatBox">
+        <div>{{avg_kda | round(2)}} / {{wr | round(2)}} / {{avg_cs | round(2)}}</div>
+    </div>
+    {% if matchHistory %}
+        {% for index, match in matchHistory %}
+        <div class="{{winList[index]}}">
+        <div class="match">
+            <div class="deco"></div>
+            <div class="content">
+                <div class="inner">
+                    <div class="matchInfo">
+                        <div class="headgroup">
+                            <div>Ranked Solo/Duo</div>
+                            <div class="game-type">{{winList[index]}}</div>
+                        </div>
+                        <div class="divider"></div>
+                        <div class="headgroup">
+                            <div>{{match.game_duration|minutes_seconds}}</div>
+                        </div>
+                    </div>
+                    <div class="playerInfo">
+                        <div class="main">
+                            <div class="info">
+                                <div>
+                                    <img src="https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-icons/{{match.championId}}.png"
+                                    width="48" height="48">
+                                </div>
+                            </div>
+                            <div class="kda-stats">
+                                <div class="kda"><span>{{match.kills}}</span>/<span class="d">{{match.deaths}}</span>/<span>{{match.assists}}</span></div>
+                                <div class="kda-ratio">
+                                    {% if match.deaths  == 0 %}
+                                    {% set deaths = 1 %}
+                                    {{((match.kills+match.assists)/deaths) | round(2)}}
+                                    {% else %}
+                                    {{((match.kills+match.assists)/match.deaths) | round(2)}}
+                                    {% endif %}
+                                    KDA
+                                    </div>
+                            </div>
+                            <div class="game-stats">
+                                <div class="cs">
+                                    {{match.totalCreepScore}} CS({{(match.totalCreepScore/match.game_duration) | round(1)}})
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sub">
+                            <dl class="items">
+                                {% for i in range(7) %}
+                                <dd>
+                                    <div class="item">
+                                    {% if match['item' + i|string] == 0 %}
+                                    {% else %}
+                                        <img src="{{ url_for('static', filename='images/'+ match['item' + i|string]|string + '.png') }}"
+                                width="22" height="22">
+                                    {% endif %}
+                                    </div>
+                                </dd>
+                                {% endfor %}
+                            </dl>
+                        </div>
+                    </div>
+                    <div class="playerLists">
+                        {% for i in range(1, 11) %}
+                        <div class="players">
+                            <div class="icon">
+                                <img src="https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-icons/{{ match['p' + i|string + 'ChampId'] }}.png"
+                                    width="16" height="16">
+                            </div>
+                            <div class="playersLink">
+                                <div style="position: relative;">
+                                    <a target="_blank" href="/match/{{ match['p' + i|string + 'GameName'] }}/{{ match['p' + i|string + 'TagLine'] }}">
+                                        <div class="playersName">
+                                            <span class="name">
+                                                {{match['p' + i|string + 'GameName']}}
+                                            </span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="actions"></div>
+        </div>
+            </div>
+        {% endfor %}
+        {% endif %}
+</div>
+
+{% endblock %}

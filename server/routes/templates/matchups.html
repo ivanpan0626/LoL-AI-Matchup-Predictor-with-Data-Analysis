@@ -1,0 +1,15 @@
+{% extends "base.html" %} {% block title %}Matchup{% endblock %}
+{% block content %}
+    <div className="searchBar">
+        <h1> Team Vs Team Matchup predictor </h1>
+        <form action="/ai/team_matchup">
+                  <button type="submit" class="searchbar-btn">Search</button>
+              </form>
+        </div>
+    <div className="searchBar">
+        <h1>Lane Matchup predictor </h1>
+        <form action="/ai/lane_matchup">
+                  <button type="submit" class="searchbar-btn">Search</button>
+              </form>
+        </div>
+{% endblock %}

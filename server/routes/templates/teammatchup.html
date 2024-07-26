@@ -1,0 +1,60 @@
+{% extends "base.html" %} {% block title %}Team Matchup{% endblock %}
+{% block content %}
+    <form method="POST">
+        <input
+            type="text"
+            name="champ1"
+            placeholder="Red Team"
+            />
+            <input
+            type="text"
+            name="champ2"
+            placeholder="Red Team"
+            />
+            <input
+            type="text"
+            name="champ3"
+            placeholder="Red Team"
+            />
+            <input
+            type="text"
+            name="champ4"
+            placeholder="Red Team"
+            />
+            <input
+            type="text"
+            name="champ5"
+            placeholder="Red Team"
+            />
+            <input
+            type="text"
+            name="champ6"
+            placeholder="Blue Team"
+            />
+            <input
+            type="text"
+            name="champ7"
+            placeholder="Blue Team"
+            />
+            <input
+            type="text"
+            name="champ8"
+            placeholder="Blue Team"
+            />
+            <input
+            type="text"
+            name="champ9"
+            placeholder="Blue Team"
+            />
+            <input
+            type="text"
+            name="champ10"
+            placeholder="Blue Team"
+            />
+            <button type="submit" class="searchbar-btn">Search</button>
+    </form>
+    
+    {% if test %}
+    <h1>{{test}}</h1>
+    {% endif %}
+{% endblock %}

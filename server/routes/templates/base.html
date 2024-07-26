@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LoL AI</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+    crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.8/css/dataTables.dataTables.css" />
+    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/2.0.8/js/dataTables.js"></script>
+</head>
+<body>
+    <div class="bg-light min-vh-100" style="height: 100%;">
+        <nav class="navbar navbar-expand-md navbar-light" style="font-size: 30px; z-index: 5;">
+            <button aria-controls="responsive-navbar-nav" type="button" aria-label="Toggle navigation" class="navbar-toggler collapsed">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse" id="responsive-navbjar-nav">
+                <div class="navbar-nav" style="width: 100%; display: flex; justify-content: space-evenly;">
+                    <a href="/" class="nav-link">Home</a>
+                    <a href="/leaderboard" class="nav-link">Leaderboards</a>
+                    <a href="/ai" class="nav-link">Matchup</a>
+                </div>
+            </div>
+        </nav>
+        {% block content %}
+        <div className="searchBar">
+            <form method="post" action="/search">
+                      <input
+                          type="text"
+                          name="value"
+                          placeholder="Search Summoner"
+                      />
+                      <button type="submit" class="searchbar-btn">Search</button>
+                  </form>
+            </div>
+    {% endblock %}
+</body>
+</html>

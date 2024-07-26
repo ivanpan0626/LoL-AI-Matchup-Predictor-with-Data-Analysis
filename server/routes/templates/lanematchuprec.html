@@ -1,0 +1,17 @@
+{% extends "base.html" %} {% block title %}Matchup{% endblock %}
+{% block content %}
+    <form method="POST">
+            <input
+            type="text"
+            name="champ2"
+            placeholder="Blue Team"
+            />
+            <button type="submit" class="searchbar-btn">Search</button>
+    </form>
+    
+    {% if test %}
+    <h1>{{test[0]}} : {{testChamps[0]}}</h1>
+    <h1>{{test[1]}} : {{testChamps[1]}}</h1>
+    <h1>{{test[2]}} : {{testChamps[2]}}</h1>
+    {% endif %}
+{% endblock %}

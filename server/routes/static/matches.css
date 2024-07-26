@@ -1,0 +1,268 @@
+.container {
+    margin-top: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.match {
+    display: flex;
+    flex-direction: row;
+    width: 40%;
+    margin: 0 auto;
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+    background-color: var(--game-item-color-100);
+    padding: 4px 0px;
+    gap: 4px;
+}
+
+.inner {
+    display: flex;
+    padding: 0px 12px;
+    -webkit-box-align: center;
+    align-items: center;
+    gap: 8px;
+    flex: 1 1 0%;
+}
+
+.actions {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 40px;
+}
+
+.deco {
+    min-width: 6px;
+    width: 6px;
+    background-color: var(--game-item-color-500);
+}
+
+.Lose {
+    --game-item-color-100: #59343b;
+    --game-item-color-200: #703c47;
+    --game-item-color-300: #703c47;
+    --game-item-color-500: #e84057;
+    --game-item-color-600: #e84057;
+    --game-item-color-200-dark: #703c47;
+}
+
+.Win {
+    --game-item-color-100: #28344e;
+    --game-item-color-200: #2f436e;
+    --game-item-color-300: #2f436e;
+    --game-item-color-500: #5383e8;
+    --game-item-color-600: #5383e8;
+    --game-item-color-200-dark: #2f436e;
+}
+
+.Remake {
+    --game-item-color-100: #282830;
+    --game-item-color-200: #424254;
+    --game-item-color-300: #515163;
+    --game-item-color-500: #9e9eb1;
+    --game-item-color-600: #9e9eb1;
+    --game-item-color-200-dark: #424254;
+}
+
+.matchInfo {
+    width: 108px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    color: #9e9eb1;
+}
+
+.headgroup {
+    display: flex;
+    flex-direction: column;
+    white-space: nowrap;
+    color: #9e9eb1;
+}
+
+.divider{
+    width: 48px;
+    height: 1px;
+    background-color: var(--game-item-color-200);
+}
+
+.game-type{
+    color: var(--game-item-color-600);
+}
+
+.playerInfo{
+    display: flex;
+    flex-direction: column;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    height: 100%;
+    gap: 2px;
+    flex: 1 1 0%;
+}
+
+.main{
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    gap: 12px;
+}
+
+.sub{
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.items{
+    display: flex;
+    align-items: flex-start;
+    gap: 2px;
+    
+}
+
+dl, dd {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+.item{
+    border-radius: 4px;
+    display: flex;
+    min-width: 22px;
+    height: 22px;
+    overflow: hidden;
+    background: var(--game-item-color-300);
+}
+
+.item img{
+    border-radius: 4px;
+}
+
+img {
+    border: 0px;
+    vertical-align: middle;
+    max-width: 100%;
+    border-radius: 50%;
+}
+
+.info{
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    gap: 4px;
+    height: 58px;
+}
+
+.kda-stats{
+    width: 108px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+}
+
+.kda{
+    color: #c1c1c5;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 22px;
+}
+
+.kda span{
+    color: #FFF;
+}
+
+.kda span.d{
+    color: #e84057;
+}
+
+.kda-ratio{
+    color: #9e9eb1;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+}
+
+.game-stats {
+    display: flex;
+    flex-direction: column;
+    height: 58px;
+    flex: 1 1 0%;
+    padding-left: 8px;
+    border-left-width: 1px;
+    border-left-style: solid;
+    border-color: var(--game-item-color-200);
+    color: #9e9eb1;
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 14px;
+    width: 148px;
+}
+
+.cs {
+    white-space: nowrap;
+    position: relative;
+}
+
+.playerLists {
+    display: flex;
+    flex-flow: column wrap;
+    gap: 2px 8px;
+    max-height: 88px;
+    width: 168px;
+}
+
+.players{
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    gap: 4px;
+    color: #9E9EB1;
+    height: 16px;
+}
+
+.playersLink{
+    font-size: 12px;
+    line-height: 16px;
+    max-width: 60px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: flex;
+}
+
+a {
+    text-decoration: none; /* Remove the underline */
+}
+a:hover {
+    text-decoration: none; /* Remove the underline */
+}
+
+.playersName{
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    box-sizing: border-box;
+    gap: 4px;
+}
+
+.name {
+    font-size: 12px;
+    line-height: 16px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #9e9eb1;
+}
