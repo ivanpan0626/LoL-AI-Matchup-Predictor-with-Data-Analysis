@@ -48,11 +48,11 @@ def match_stats(gameName, tagLine):
         if not matchExists:
             new_row = {'matchId' : match}
             matchlist_df = pd.DataFrame([new_row])
-            matchlist_df.to_sql('matchlist', con=db_engine, schema='summonerdata', if_exists='append', index=False)
+            dataServices.toSQL(matchlist_df, 'matchlist', 'append')
 
             match_df = apiServices.processMatchData(apiServices.get_match(match), puuid)
             match_df['uuid'] = f'{puuid}_{match}'
-            match_df.to_sql('matchhistory', con=db_engine, schema='summonerdata', if_exists='append', index=False)
+            dataServices.toSQL(match_df, 'matchhistory', 'append')
             match_history.append(match_df.iloc[0])
             
             searchServices.matchStats(match_df, 0, win_history, avg_kda, avg_cs, wr, remakeCounter)
@@ -65,7 +65,7 @@ def match_stats(gameName, tagLine):
             else:
                 match_df = apiServices.processMatchData(apiServices.get_match(match), puuid)
                 match_df['uuid'] = f'{puuid}_{match}'
-                match_df.to_sql('matchhistory', con=db_engine, schema='summonerdata', if_exists='append', index=False)
+                dataServices.toSQL(match_df, 'matchhistory', 'append')
                 match_history.append(match_df.iloc[0])
 
                 searchServices.matchStats(match_df, 0, win_history, avg_kda, avg_cs, wr, remakeCounter)
