@@ -1,8 +1,7 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for
 import json
 import pandas as pd
-from routes import apiServices as lolapi
-from routes import ai as ai
+from routes import aiServices as aiServices
 from tensorflow.keras.models import load_model
 import numpy as np
 from sklearn.preprocessing import LabelEncoder
@@ -28,7 +27,7 @@ with open(championTopId_path, 'r') as file:
     championTopId_dict = json.load(file)
 
 def matchupCalc(champ1, champ2):
-    x, x_features = ai.preprocessMatchup(champ1, champ2)
+    x, x_features = aiServices.preprocessMatchup(champ1, champ2)
     pred = neuralModel.predict([x['redTeam_mapped'], x['blueTeam_mapped'], x_features])
     return pred
 
@@ -88,9 +87,9 @@ def team_matchup():
                 return render_template('teammatchup.html', test=f'Invalid Champion name at index {i}')
             if i > 5:
                 side = 'blue'
-            ai.createChampionData(champ, side)
+            aiServices.createChampionData(champ, side)
 
-        x = ai.preprocessTeamMatchup(ai.appendItems())
+        x = aiServices.preprocessTeamMatchup(aiServices.appendItems())
         pred = RFmodel.predict_proba(x)[:, 1]
         y_pred = RFmodel.predict(x)
         print(y_pred)

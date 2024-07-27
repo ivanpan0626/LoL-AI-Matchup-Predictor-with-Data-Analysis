@@ -4,7 +4,7 @@ import re
 import os
 from os import environ
 from sqlalchemy import create_engine, text
-from routes import apiServices as lolapi
+from routes import apiServices as apiServices
 
 db_engine = create_engine(environ.get('DB_URL'), pool_recycle=3600)
 
@@ -72,7 +72,7 @@ def processMatchData(matchData, puuid):
             gameNames.append(playerid_df.iloc[puuidExists[0]]['gameName'])
             tagLines.append(playerid_df.iloc[puuidExists[0]]['tagLine'])
         else:
-            profileIconId, summonerLevel, summonerId, gameName, tagLine = lolapi.get_summonerInfo_FromPuuid(participants[i])
+            profileIconId, summonerLevel, summonerId, gameName, tagLine = apiServices.get_summonerInfo_FromPuuid(participants[i])
             new_row = {'puuid' : participants[i], 
                     'summonerId' : summonerId, 
                     'gameName': gameName, 
