@@ -22,12 +22,7 @@
 <script>
     
     // Example data: player names with associated links
-    const players = [
-        { name: 'peter', link: 'https://example.com/peter' },
-        { name: 'john', link: 'https://example.com/john' },
-        { name: 'jane', link: 'https://example.com/jane' }
-        // Add more players as needed
-    ];
+    const players = {{playersId|tojson}}
 
     const suggestionsBox = document.getElementById('suggestions');
     function updatePlayerSuggestions(query1) {
@@ -36,11 +31,11 @@
         suggestionsBox.innerHTML = ''; // Clear previous suggestions
 
         if (query) {
-            const filteredPlayers = players.filter(player => player.name.toLowerCase().includes(query));
+            const filteredPlayers = players.filter(player => `${player.gameName}#${player.tagLine}`.toLowerCase().includes(query));
             filteredPlayers.forEach(player => {
                 const item = document.createElement('div');
                 item.className = 'suggestion-item';
-                item.innerHTML = `<a href="${player.link}" target="_blank"><img src="https://s-lol-web.op.gg/images/icon/icon-gg.svg" style="width=36" height="36">${player.name}</a>`;
+                item.innerHTML = `<a href="http://127.0.0.1:5000/match/${player.gameName}/${player.tagLine}" target="_blank"><div class="inner"><img src="https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/profile-icons/${player.profileIconId}.jpg" width="36" height="36">${player.gameName}#${player.tagLine}</div></a>`;
                 suggestionsBox.appendChild(item);
             });
         }

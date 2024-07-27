@@ -4,7 +4,7 @@ def convert_to_minutes_seconds(decimal_minutes):
     seconds = (decimal_minutes - minutes) * 60
     return minutes, int(seconds)
 
-def test(chal_df, summonerGameNames, summonerTagLines, summonerIcons, summonerLevels):
+def organizeLeaderboard(chal_df, summonerGameNames, summonerTagLines, summonerIcons, summonerLevels):
     chal_df_new = chal_df[['leaguePoints', 'hotStreak']]
     chal_df_new.insert(0, 'summonerGameName', summonerGameNames)
     chal_df_new.insert(1, 'summonerTagLine', summonerTagLines)
@@ -43,7 +43,7 @@ def matchStats(match_df, index, win_history, avg_kda, avg_cs, wr, remakeCounter)
                 winloss = 'Lose'
     
     win_history.append(winloss)
-    avg_kda += kda 
-    avg_cs += cs
-    wr += wr1
-    remakeCounter += remakeCounter1
+    avg_kda[0] += kda
+    avg_cs[0] += cs
+    wr[0] += wr1
+    remakeCounter[0] += remakeCounter1

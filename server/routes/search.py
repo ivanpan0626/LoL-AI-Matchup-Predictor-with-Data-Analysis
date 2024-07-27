@@ -38,10 +38,10 @@ def match_stats(gameName, tagLine):
 
     match_history = []
     win_history = []
-    avg_kda = 0
-    avg_cs = 0
-    wr = 0
-    remakeCounter = 0
+    avg_kda = [0]
+    avg_cs = [0]
+    wr = [0]
+    remakeCounter = [0]
 
     for match in matches:
         matchExists = matchId_df.index[matchId_df['matchId'] == match].tolist()
@@ -72,8 +72,9 @@ def match_stats(gameName, tagLine):
 
     df = pd.DataFrame(match_history)
     matchHistory = df.to_dict(orient='records')
+    print(avg_cs[0])
 
-    return render_template('matches.html', matchHistory=enumerate(matchHistory, start=0), winList=win_history, wr=(wr/(len(match_history)-remakeCounter))*100, avg_kda=avg_kda/(len(match_history)-remakeCounter), avg_cs=avg_cs/(len(match_history)-remakeCounter))
+    return render_template('matches.html', matchHistory=enumerate(matchHistory, start=0), winList=win_history, wr=(int(wr[0])/(len(match_history)-remakeCounter[0]))*100, avg_kda=int(avg_kda[0])/(len(match_history)-remakeCounter[0]), avg_cs=int(avg_cs[0])/(len(match_history)-remakeCounter[0]))
 
 #Route for showing top players of LOL
 @search.route('/leaderboard')
@@ -108,7 +109,7 @@ def get_leaderboard():
         summonerIcons.append(profileIconId)
         summonerLevels.append(summonerLevel)
 
-    leaderboard = searchServices.test(chal_df, summonerGameNames, summonerTagLines, summonerIcons, summonerLevels)
+    leaderboard = searchServices.organizeLeaderboard(chal_df, summonerGameNames, summonerTagLines, summonerIcons, summonerLevels)
 
     return render_template('leaderboards.html', leaderboard=enumerate(leaderboard, start=1))
 
@@ -116,12 +117,12 @@ def get_leaderboard():
 @search.route('/search', methods=['get', 'post'])
 def search_redirect():
     if request.method == 'POST':
-        value = request.form.get('playerSearch')
-        parts = value.split('#')
+        playerName = request.form.get('playerSearch')
+        parts = playerName.split('#')
         if len(parts) == 1:
             return redirect(url_for('views.home'))
-        gameName = parts[0]
-        tagLine = parts[1]
+        gameName = str(parts[0]).strip()
+        tagLine = str(parts[1]).strip()
         return redirect(url_for('search.match_stats', gameName=gameName, tagLine=tagLine))
     
     return redirect(url_for('views.home'))

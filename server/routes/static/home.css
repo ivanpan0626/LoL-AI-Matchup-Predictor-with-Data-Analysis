@@ -68,7 +68,7 @@ button{
     position: absolute;
     width: 80%;
     margin-left: 20px;
-    background-color: white;
+    background-color: #21212b;
     max-height: 200px;
     overflow-y: auto;
     z-index: 1000;
@@ -92,4 +92,14 @@ img{
 
 .suggestion-item:hover{
     background-color: rgb(173, 171, 167);
+}
+
+.inner{
+    padding: 6px 16px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    box-sizing: border-box;
 }

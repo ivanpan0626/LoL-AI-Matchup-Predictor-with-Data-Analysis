@@ -16,7 +16,7 @@ def merge_champion_stats(all_match_df, champion_data_df):
     return matchProcess.merge_champion_stats(all_match_df, champion_data_df)
 
 def matchDataCollect(matchData, puuid):
-    storeMatchData(matchData)
+    #storeMatchData(matchData)
     return matchProcess.processMatchData(matchData, puuid)
 
 def storeMatchData(matchData):
