@@ -3,7 +3,8 @@ from sklearn.preprocessing import LabelEncoder, StandardScaler
 import os
 import json
 import pandas as pd
-from routes import apiServices as lolapi
+from routes import apiServices as apiServices
+from routes import dataServices as dataServices
 import ast
 
 base_dir = os.path.abspath(os.path.dirname(__file__))
@@ -23,7 +24,7 @@ def preprocessMatchup(champ1, champ2):
     guess_df.loc[0, 'redTeam'] = champ1
     guess_df.loc[0, 'blueTeam'] = champ2
         
-    guess_df = lolapi.merge_champion_stats(guess_df, champion_data_df)
+    guess_df = dataServices.merge_champion_stats(guess_df, champion_data_df)
 
     tiers = ['S+Tier', 'STier', 'ATier', 'BTier', 'CTier', 'DTier']
     tier_label_encoder = LabelEncoder()

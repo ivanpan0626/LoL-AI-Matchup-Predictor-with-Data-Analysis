@@ -1,0 +1,95 @@
+form {
+    width: 50%;
+    margin: auto;
+    margin-top: 200px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.19);
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    position: relative;
+    background: #FFF;
+    background: #31313C;
+    border-radius: 30px;
+    height: 60px;
+    text-align: left;
+}
+
+.search-wrapper{
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+}
+
+.label{
+    margin-left: 20px;
+    margin-bottom: 4px;
+    color: rgb(210, 216, 216);
+}
+
+input{
+    font-weight: bold;
+    background: transparent;
+    position: relative;
+    border: 0;
+    width: 95%;
+    margin-left: 20px;
+    border-radius: 30px;
+    box-sizing: border-box;
+    font-size: 14px;
+    line-height: 20px;
+    color: #ffffff;
+}
+
+button{
+    background-image: url(https://s-lol-web.op.gg/images/icon/icon-gg.svg);
+    background-repeat: no-repeat;
+    background-color: transparent;
+    -webkit-background-size: 42px;
+    background-size: 42px;
+    -webkit-background-position: center;
+    background-position: center;
+    width: 90px;
+    height: 60px;
+    font-size: 0;
+    border-color: transparent;
+}
+
+#suggestions {
+    border: 1px solid #ddd;
+    border-top: none;
+    position: absolute;
+    width: 80%;
+    margin-left: 20px;
+    background-color: white;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+.suggestion-item{
+    padding: 6px 16px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+img{
+    border: 0px;
+    vertical-align: middle;
+    max-width: 100%;
+}
+
+.suggestion-item:hover{
+    background-color: rgb(173, 171, 167);
+}

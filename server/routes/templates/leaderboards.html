@@ -5,44 +5,50 @@
         color: inherit; /* Inherit the color from the parent element */
         text-decoration: none; /* Remove the underline */
     }
+    .background{
+        background-color: aliceblue;
+    }
+    .dt-orderable-asc, .dt-orderable-desc, .dt-orderable-none{
+        background-color: rgb(187, 197, 197);
+    }
+
 </style>
-<table id="myTable" class="compact">
-    <thead>
-        <tr>
-            <td><strong>Rank</strong></td>
-            <td><strong>Summoner</strong></td>
-            <td><strong>Level</strong></td>
-            <td><strong>LP</strong></td>
-            <td><strong>Win Rate</strong></td>
-        </tr>
-    </thead>
-    <tbody>
-        {% if leaderboard %}
-        {% for index, player in leaderboard %}
-        <tr>
-            <td>#{{index}}</td>
-            <td><a href="/match/{{player.summonerGameName}}/{{player.summonerTagLine}}" class="no-style-link">
-                <img src="https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/profile-icons/{{player.profileIconId}}.jpg"
-                width="28" height="28">
-                {{player.summonerGameName}}#{{player.summonerTagLine}}
-                </a>
-            </td>
-            <td>{{player.summonerLevel}}</td>
-            <td>{{player.leaguePoints}}</td>
-            <td>
-                {{player.win_rate}} <span>{{player.winloss}}</span></td>
-        </tr>
-        {% endfor %}
-        {% endif %}
-    </tbody>
-</table>
-
+<div class="background">
+    <table id="myTable" class="compact">
+        <thead>
+            <tr>
+                <td><strong>Rank</strong></td>
+                <td><strong>Summoner</strong></td>
+                <td><strong>Level</strong></td>
+                <td><strong>LP</strong></td>
+                <td><strong>Win Rate</strong></td>
+            </tr>
+        </thead>
+        <tbody>
+            {% if leaderboard %}
+            {% for index, player in leaderboard %}
+            <tr>
+                <td>#{{index}}</td>
+                <td><a href="/match/{{player.summonerGameName}}/{{player.summonerTagLine}}" class="no-style-link">
+                    <img src="https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/profile-icons/{{player.profileIconId}}.jpg"
+                    width="28" height="28">
+                    {{player.summonerGameName}}#{{player.summonerTagLine}}
+                    </a>
+                </td>
+                <td>{{player.summonerLevel}}</td>
+                <td>{{player.leaguePoints}}</td>
+                <td>
+                    {{player.win_rate}} <span>{{player.winloss}}</span></td>
+            </tr>
+            {% endfor %}
+            {% endif %}
+        </tbody>
+    </table>
 </div>
-
 <script>
 $(document).ready(function() {
     $('#myTable').DataTable({
-        scrollY: 700,
+        scrollY: 750,
         paging: false,
         columnDefs: [{ orderable: false, targets: 0 }],
         order: [[3, 'desc']]

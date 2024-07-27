@@ -1,13 +1,24 @@
-from routes import dataServices as data
+from routes import dataServices as dataServices
 import requests
 from os import environ
+from routes import dataServices as dataServices
 
 api_key = environ.get('API_KEY')
 
-def get_puuid_FromGameName(gameName, tag):
-    url = f"https://americas.api.riotgames.com/riot/account/v1/accounts/by-riot-id/{gameName}/{tag}?api_key={api_key}"
-    puuid = requests.get(url).json()['puuid']
-    return puuid
+def get_puuid_FromGameName(gameName, tagLine):
+    url = f"https://americas.api.riotgames.com/riot/account/v1/accounts/by-riot-id/{gameName}/{tagLine}?api_key={api_key}"
+    #puuid = requests.get(url).json()['puuid']
+    try:
+        resp = requests.get(url)
+        resp.raise_for_status()
+        puuid = resp.json()['puuid']
+
+        return puuid
+    
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+    return None
 
 def get_riotId_fromPuuid(puuid):
     url = f'https://americas.api.riotgames.com/riot/account/v1/accounts/by-puuid/{puuid}?api_key={api_key}'
@@ -25,6 +36,7 @@ def get_summonerInfo_FromPuuid(puuid):
 
     gameName, tagLine = get_riotId_fromPuuid(puuid)
 
+    dataServices.savePlayerId(puuid, summonerId, gameName, tagLine, profileIconId, summonerLevel)
     return profileIconId, summonerLevel, summonerId, gameName, tagLine
 
 def get_summonerInfo_FromSummonerId(summonerId):
@@ -36,6 +48,7 @@ def get_summonerInfo_FromSummonerId(summonerId):
 
     gameName, tagLine = get_riotId_fromPuuid(puuid)
     
+    dataServices.savePlayerId(puuid, summonerId, gameName, tagLine, profileIconId, summonerLevel)
     return profileIconId, summonerLevel, puuid, gameName, tagLine
 
 def get_matchlist_FromPuuid(puuid):
@@ -53,4 +66,4 @@ def get_leaderboard(league='challenger'):
     return requests.get(url).json()
 
 def processMatchData(matchData, puuid):
-    return data.dataCollect(matchData, puuid)
+    return dataServices.matchDataCollect(matchData, puuid)

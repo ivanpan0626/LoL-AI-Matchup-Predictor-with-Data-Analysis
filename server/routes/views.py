@@ -4,8 +4,8 @@ views = Blueprint('views', __name__)
 
 @views.route('/')
 def home():
-    return render_template('base.html')
+    return render_template('home.html')
 
 @views.route('/ai')
 def matchups_home():
-    return render_template('matchups.html')
+    return render_template('matchupsHome.html')

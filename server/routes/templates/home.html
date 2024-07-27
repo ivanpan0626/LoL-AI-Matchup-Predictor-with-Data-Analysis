@@ -1,0 +1,56 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %}
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='home.css')}}" />
+<div className="searchBar">
+    <form method="post" action="/search">
+        <div class="search-wrapper">
+            <label for="playerSearch" class="label">Search</label>
+            <input
+            type="text"
+            id="searchBar" 
+            placeholder="Gamename#Tagline"
+            name="playerSearch" 
+            list="playerSuggestions" 
+            oninput="updatePlayerSuggestions(this.value)"/>
+            <div id="suggestions">
+                
+            </div>
+        </div>
+        <button type="submit" class="searchbar-btn">Search</button>
+    </form>
+</div>
+<script>
+    
+    // Example data: player names with associated links
+    const players = [
+        { name: 'peter', link: 'https://example.com/peter' },
+        { name: 'john', link: 'https://example.com/john' },
+        { name: 'jane', link: 'https://example.com/jane' }
+        // Add more players as needed
+    ];
+
+    const suggestionsBox = document.getElementById('suggestions');
+    function updatePlayerSuggestions(query1) {
+
+        const query = query1.toLowerCase();
+        suggestionsBox.innerHTML = ''; // Clear previous suggestions
+
+        if (query) {
+            const filteredPlayers = players.filter(player => player.name.toLowerCase().includes(query));
+            filteredPlayers.forEach(player => {
+                const item = document.createElement('div');
+                item.className = 'suggestion-item';
+                item.innerHTML = `<a href="${player.link}" target="_blank"><img src="https://s-lol-web.op.gg/images/icon/icon-gg.svg" style="width=36" height="36">${player.name}</a>`;
+                suggestionsBox.appendChild(item);
+            });
+        }
+    };
+
+    // Hide suggestions when clicking outside
+    document.addEventListener('click', function(event) {
+        if (!searchBar.contains(event.target) && !suggestionsBox.contains(event.target)) {
+            suggestionsBox.innerHTML = '';
+        }
+    });
+</script>
+{% endblock %}

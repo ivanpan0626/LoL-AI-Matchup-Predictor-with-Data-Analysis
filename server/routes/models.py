@@ -91,8 +91,7 @@ def team_matchup():
 
         x = aiServices.preprocessTeamMatchup(aiServices.appendItems())
         pred = RFmodel.predict_proba(x)[:, 1]
-        y_pred = RFmodel.predict(x)
-        print(y_pred)
+        #y_pred = RFmodel.predict(x)
         print(pred)
         return render_template('teammatchup.html', test=pred[0])
         
