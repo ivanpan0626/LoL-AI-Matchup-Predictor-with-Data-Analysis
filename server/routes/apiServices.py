@@ -2,7 +2,6 @@ from routes import dataServices as data
 import requests
 from os import environ
 
-
 api_key = environ.get('API_KEY')
 
 def get_puuid_FromGameName(gameName, tag):
