@@ -3,9 +3,10 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 from dotenv import load_dotenv
 
+load_dotenv()
+
 def create_app():
     app = Flask(__name__)
-    load_dotenv('.env')
     app.config.from_object('config.Config')
 
     #app.config['CELERY_BROKER_URL'] = 'redis://localhost:6379/0'
