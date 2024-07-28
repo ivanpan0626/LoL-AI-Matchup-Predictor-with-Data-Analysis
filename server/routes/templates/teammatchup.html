@@ -1,60 +1,69 @@
 {% extends "base.html" %} {% block title %}Team Matchup{% endblock %}
 {% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='matchups.css')}}" />
     <form method="POST">
-        <input
-            type="text"
-            name="champ1"
-            placeholder="Red Team"
-            />
-            <input
-            type="text"
-            name="champ2"
-            placeholder="Red Team"
-            />
-            <input
-            type="text"
-            name="champ3"
-            placeholder="Red Team"
-            />
-            <input
-            type="text"
-            name="champ4"
-            placeholder="Red Team"
-            />
-            <input
-            type="text"
-            name="champ5"
-            placeholder="Red Team"
-            />
-            <input
-            type="text"
-            name="champ6"
-            placeholder="Blue Team"
-            />
-            <input
-            type="text"
-            name="champ7"
-            placeholder="Blue Team"
-            />
-            <input
-            type="text"
-            name="champ8"
-            placeholder="Blue Team"
-            />
-            <input
-            type="text"
-            name="champ9"
-            placeholder="Blue Team"
-            />
-            <input
-            type="text"
-            name="champ10"
-            placeholder="Blue Team"
-            />
-            <button type="submit" class="searchbar-btn">Search</button>
+        <div id="container">
+            <div class="col">
+                <div class="row">
+                    <div class="col">
+                        <div>
+                            <label for="champ1">RedTeamTop</label><br>
+                            <input type="text" name="champ1">
+                        </div>
+                        <div>
+                            <label for="champ2">RedTeamJungle</label><br>
+                            <input type="text" name="champ2">
+                        </div>
+                        <div>
+                            <label for="champ3">RedTeamMid</label><br>
+                            <input type="text" name="champ3">
+                        </div>
+                        <div>
+                            <label for="champ4">RedTeamBot</label><br>
+                            <input type="text" name="champ4">
+                        </div>
+                        <div>
+                            <label for="champ5">RedTeamSupp</label><br>
+                            <input type="text" name="champ5">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div>
+                            <label for="champ6">BlueTeamTop</label><br>
+                            <input type="text" name="champ6">
+                        </div>
+                        <div>
+                            <label for="champ7">BlueTeamJungle</label><br>
+                            <input type="text" name="champ7">
+                        </div>
+                        <div>
+                            <label for="champ8">BlueTeamMid</label><br>
+                            <input type="text" name="champ8">
+                        </div>
+                        <div>
+                            <label for="champ9">BlueTeamBot</label><br>
+                            <input type="text" name="champ9">
+                        </div>
+                        <div>
+                            <label for="champ10">BlueTeamSupp</label><br>
+                            <input type="text" name="champ10">
+                        </div>
+                      </div>
+                </div>
+                <div class="col">
+                    <input type="submit" value="AI Predict" class="btn">
+                </div>
+            </div>
     </form>
-    
-    {% if test %}
-    <h1>{{test}}</h1>
-    {% endif %}
+    <div>
+        {% if warning %}
+        <h2>{{warning}}</h2>
+        {% endif %}
+        {% if results %}
+        <span>{{redTeam}}</span>
+        vs
+        <span>{{blueTeam}}</span>
+        <h2 style="align-items: center;">{{results|round(2)}}% probability of winning</h2>
+        {% endif %}
+    </div>
 {% endblock %}

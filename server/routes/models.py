@@ -37,14 +37,14 @@ def lane_matchup():
         champ1 = request.form.get('champ1')
         champ2 = request.form.get('champ2')
         if champ1 not in championId_dict.values():
-            return render_template('lanematchup.html', test='Invalid Red Team Champion Name')
+            return render_template('lanematchup.html', warning='Invalid Red Team Champion Name')
         if champ2 not in championId_dict.values():
-            return render_template('lanematchup.html', test='Invalid Blue Team Champion Name')
+            return render_template('lanematchup.html', warning='Invalid Blue Team Champion Name')
         
         pred = matchupCalc(champ1, champ2)
         pred_reverse = matchupCalc(champ2, champ1)
-        pred[0][0] = .50 + (pred[0][0]-pred_reverse[0][0])
-        return render_template('lanematchup.html', test=pred[0][0])
+        pred[0][0] = (.50 + (pred[0][0]-pred_reverse[0][0]))*100
+        return render_template('lanematchup.html', results=pred[0][0], champ1=champ1, champ2=champ2)
         
     return render_template('lanematchup.html')
 
@@ -60,7 +60,7 @@ def lane_matchup_rec():
         for champ1 in championTopId_dict.values():
             pred = matchupCalc(champ1, champ2)
             pred_reverse = matchupCalc(champ2, champ1)
-            pred[0][0] = .50 + (pred[0][0]-pred_reverse[0][0])
+            pred[0][0] = (.50 + (pred[0][0]-pred_reverse[0][0]))*100
             if pred[0][0] > highestWR[2]:
                 if pred[0][0] > highestWR[1]:
                     if pred[0][0] > highestWR[0]:
@@ -73,7 +73,7 @@ def lane_matchup_rec():
                     highestWR[2] = pred[0][0]
                     champName[2] = champ1
 
-        return render_template('lanematchuprec.html', test=highestWR, testChamps=champName)
+        return render_template('lanematchuprec.html', resultsWR=highestWR, resultsChamps=champName)
         
     return render_template('lanematchuprec.html')
 
@@ -81,18 +81,19 @@ def lane_matchup_rec():
 def team_matchup():
     if request.method == 'POST':
         side = 'red'
+        champList = []
         for i in range(1,11):
             champ = request.form.get(f'champ{i}')
+            champList.append(champ)
             if champ not in championId_dict.values():
-                return render_template('teammatchup.html', test=f'Invalid Champion name at index {i}')
+                return render_template('teammatchup.html', warning=f'Invalid Champion name at {i}')
             if i > 5:
                 side = 'blue'
             aiServices.createChampionData(champ, side)
 
         x = aiServices.preprocessTeamMatchup(aiServices.appendItems())
-        pred = RFmodel.predict_proba(x)[:, 1]
+        pred = RFmodel.predict_proba(x)[:, 1]*100
         #y_pred = RFmodel.predict(x)
-        print(pred)
-        return render_template('teammatchup.html', test=pred[0])
+        return render_template('teammatchup.html', results=pred[0], redTeam=champList[:5], blueTeam=champList[-5:])
         
     return render_template('teammatchup.html')

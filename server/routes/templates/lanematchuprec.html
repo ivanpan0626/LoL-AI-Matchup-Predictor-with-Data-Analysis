@@ -1,17 +1,23 @@
 {% extends "base.html" %} {% block title %}Matchup{% endblock %}
 {% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='matchups.css')}}" />
     <form method="POST">
-            <input
-            type="text"
-            name="champ2"
-            placeholder="Blue Team"
-            />
-            <button type="submit" class="searchbar-btn">Search</button>
+        <div id="container">
+            <div class="row">
+                <div>
+                    <label for="champ2">Enemy Champion</label><br>
+                    <input type="text" name="champ2">
+                </div>
+                <div>
+                    <input type="submit" value="AI Recommend" class="btn">
+                </div>
+            </div>
+        </div>
     </form>
     
-    {% if test %}
-    <h1>{{test[0]}} : {{testChamps[0]}}</h1>
-    <h1>{{test[1]}} : {{testChamps[1]}}</h1>
-    <h1>{{test[2]}} : {{testChamps[2]}}</h1>
+    {% if resultsWR %}
+    <h1>{{resultsWR[0]}} : {{resultsChamps[0]}}</h1>
+    <h1>{{resultsWR[1]}} : {{resultsChamps[1]}}</h1>
+    <h1>{{resultsWR[2]}} : {{resultsChamps[2]}}</h1>
     {% endif %}
 {% endblock %}
