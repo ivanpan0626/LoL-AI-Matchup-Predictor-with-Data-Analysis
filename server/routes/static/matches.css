@@ -4,12 +4,16 @@
     flex-direction: column;
     gap: 8px;
 }
+.gameMatches{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 .match {
     display: flex;
     flex-direction: row;
     width: 40%;
-    margin: 0 auto;
 }
 
 .content{
@@ -33,7 +37,8 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    width: 40px;
+    width: 90px;
+    background-color: var(--game-item-color-200-dark);
 }
 
 .deco {
@@ -270,20 +275,24 @@ a:hover {
 .statsbox{
     display: flex;
     text-align: left;
-    background-color: var(--gray0);
+    justify-content: center;
+    background-color: #fff;
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px;
     padding: 8px 12px;
     box-sizing: border-box;
-}
-
-.statsInfo{
     margin-top: 2px;
     line-height: 26px;
     font-size: 20px;
     font-weight: bold;
-    color: #fff;
+    margin: auto;
     font-family: Roboto, sans-serif;
+    width:596px
+}
+
+.statsContainers{
+    display: flex;
+    width: 222px;
 }
 
 /* Pie chart css */
