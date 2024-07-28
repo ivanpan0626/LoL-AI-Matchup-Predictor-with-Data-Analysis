@@ -35,7 +35,7 @@
             filteredPlayers.forEach(player => {
                 const item = document.createElement('div');
                 item.className = 'suggestion-item';
-                item.innerHTML = `<a href="http://127.0.0.1:5000/match/${player.gameName}/${player.tagLine}" target="_blank"><div class="inner"><img src="https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/profile-icons/${player.profileIconId}.jpg" width="36" height="36">${player.gameName}#${player.tagLine}</div></a>`;
+                item.innerHTML = `<a href="http://127.0.0.1:5000/match/${player.gameName}/${player.tagLine}"><div class="inner"><img src="https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/profile-icons/${player.profileIconId}.jpg" width="36" height="36">${player.gameName}#${player.tagLine}</div></a>`;
                 suggestionsBox.appendChild(item);
             });
         }
