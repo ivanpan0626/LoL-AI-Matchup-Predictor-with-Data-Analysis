@@ -27,6 +27,8 @@ def matchStats(match_df, index, win_history, avg_kda, avg_cs, wr, remakeCounter)
     if match_df.iloc[index]['win'] == True:
         if match_df.iloc[index]['deaths'] == 0:
             kda += (match_df.iloc[index]['kills']+match_df.iloc[index]['assists'])/1
+            winloss = 'Win'
+            wr1 += 1
         else:
             kda += (match_df.iloc[index]['kills']+match_df.iloc[index]['assists'])/match_df.iloc[index]['deaths']
             winloss = 'Win'
@@ -38,6 +40,7 @@ def matchStats(match_df, index, win_history, avg_kda, avg_cs, wr, remakeCounter)
         else:
             if match_df.iloc[index]['deaths'] == 0:
                 kda += (match_df.iloc[index]['kills']+match_df.iloc[index]['assists'])/1
+                winloss = 'Lose'
             else:
                 kda += (match_df.iloc[index]['kills']+match_df.iloc[index]['assists'])/match_df.iloc[index]['deaths']
                 winloss = 'Lose'
