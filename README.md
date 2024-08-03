@@ -3,16 +3,8 @@ This AI project leverages third-party APIs such as Riot Games API and web scrapi
 
 <h2>Skills Used/Learned</h2>
 - Programming Languages: Python
-- Web Development: Flask, Jinja2, HTML, CSS, JavaScript
-- Data Collection: Riot Games API, Web Scraping (BeautifulSoup, Requests)
-- Data Processing: Pandas, NumPy
-- Machine Learning: XGBoost, Random Forest, Neural Networks (TensorFlow)
-- Model Evaluation: Scikit-learn
-- Database Management: SQLAlchemy, PostgreSQL
-- Task Management: Celery, Redis
-- Version Control: Git, GitHub
 
- Click to watch Demo Video
+ <h2>Click to watch Demo Video</h2>
 [![Watch the video](https://raw.githubusercontent.com/ivanpan0626/LoL-AI-Matchup-Predictor-with-Data-Analysis/main/leagueDemoIMG.png)](https://youtu.be/gOk4Bub2Q4s)
 
 <h2>Project Overview</h2>
