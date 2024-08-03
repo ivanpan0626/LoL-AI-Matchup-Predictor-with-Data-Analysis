@@ -1,5 +1,7 @@
 # LoL-AI-Matchup-Predictor-with-Data-Analysis
- The usage of Riot API and webscraping to extract thousands of player data and champion data. This data is then preprocessed into 3 different sets of data for input into XGB, Random Forest, and Neural Network AI models for compilation, training, and evaluation for accuracy. Which the AI model will be saved and loaded onto my Flask WebApp that will host the AI for match predictions inputted by the users. With the addition of easy retrieval of any player data and champion data in League of Legends for anyone to use for personal or experimental purposes.
+This AI project leverages third-party APIs such as Riot Games API and web scraping techniques to extract extensive champion statistics that are key to developing an accurate AI model from League of Legends. All these data will then be organized and preprocessed in the Jupyter notebooks and fed into various AI models, including XGBoost, Random Forest, and Neural Networks, to predict match outcomes based on champion selections and other relevant features. The trained AI models are then integrated into a Flask web application, providing users with match predictions and easy access to player and champion data for personal or experimental purposes.
 
  Click to watch Demo Video
 [![Watch the video](https://raw.githubusercontent.com/ivanpan0626/LoL-AI-Matchup-Predictor-with-Data-Analysis/main/leagueDemoIMG.png)](https://youtu.be/gOk4Bub2Q4s)
+
+<h2>Project Overview</h2>
