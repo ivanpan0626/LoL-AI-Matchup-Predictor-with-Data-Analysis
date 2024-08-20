@@ -9,7 +9,7 @@ This AI project leverages third-party APIs such as Riot Games API and web scrapi
 - Machine Learning: XGBoost, Random Forest, Neural Networks (TensorFlow)
 - Model Evaluation: Scikit-learn
 - Database Management: SQLAlchemy, PostgreSQL
-- Task Management: Celery, Redis
+- Task Management: Celery, Redis (To be implemented)
 - Version Control: Git, GitHub
 
 # Click to watch Demo Video
